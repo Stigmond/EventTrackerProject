@@ -22,6 +22,7 @@ public class Encounter {
 		
 	}
 
+	//###GETTERS/SETTERS###
 	public int getId() {
 		return id;
 	}
@@ -38,6 +39,7 @@ public class Encounter {
 		this.title = title;
 	}
 
+	//###HASHCODE/EQUALS###
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -66,6 +68,7 @@ public class Encounter {
 		return true;
 	}
 
+	//###TOSTRING###
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
