@@ -55,8 +55,11 @@ public class EncounterController {
 	}
 	
 	@PutMapping("encounter/{id}")
-	public Encounter updateEncounter(@PathVariable Integer id, @RequestBody Encounter encounter) {
+	public Encounter updateEncounter(@PathVariable Integer id, @RequestBody Encounter encounter, HttpServletResponse response) {
 		encounter = encService.updateEncounter(id, encounter);
+		if (encounter == null) {
+			response.setStatus(404);
+		}
 		return encounter;
 	}
 	
