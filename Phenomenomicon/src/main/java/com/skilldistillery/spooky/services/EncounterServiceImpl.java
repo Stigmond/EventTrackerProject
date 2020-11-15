@@ -46,12 +46,48 @@ public class EncounterServiceImpl implements EncounterService {
 			encounter.setEntityType("Unknown");
 		}
 		if (encounter.getDisabled() != 1) {
-			encounter.setDisabled(1); //ENTERS DATABASE DISABLED FOR ADMIN REVIEW
+			encounter.setDisabled(1); //ENTERS DATABASE AS DISABLED FOR ADMIN REVIEW
 		}
 		if (encounter.getBody() == null) {
 			encounter.setBody("CLASSIFIED");
 		}
 		System.out.println(encounter);
+		encRepo.saveAndFlush(encounter);
+		return encounter;
+	}
+
+	@Override
+	public Encounter updateEncounter(Integer id, Encounter updatedEncounter) {
+		Encounter encounter  = this.getEncounterById(id);
+		if (encounter == null) {
+			return null;
+		}
+		if (updatedEncounter.getDate() != null) {
+			encounter.setDate(updatedEncounter.getDate());
+		}
+		if (updatedEncounter.getCity() != null) {
+			encounter.setCity(updatedEncounter.getCity());
+		}
+		if (updatedEncounter.getStateCountry() != null) {
+			encounter.setStateCountry(updatedEncounter.getStateCountry());
+		}
+		if (updatedEncounter.getLatitude() != null) {
+			encounter.setLatitude(updatedEncounter.getLatitude());
+		}
+		if (updatedEncounter.getLongitude() != null) {
+			encounter.setLongitude(updatedEncounter.getLongitude());
+		}
+		if (updatedEncounter.getEntityType() != null) {
+			encounter.setEntityType(updatedEncounter.getEntityType());
+		}
+		if (updatedEncounter.getEntityUrl() != null) {
+			encounter.setEntityUrl(updatedEncounter.getEntityUrl());
+		}
+		if (updatedEncounter.getBody() != null) {
+			encounter.setBody(updatedEncounter.getBody());
+		}
+		encounter.setDisabled(1); //SETS UPDATED ENTITY TO DISABLED FOR ADMIN REVIEW
+		
 		encRepo.saveAndFlush(encounter);
 		return encounter;
 	}

@@ -11,4 +11,6 @@ public interface EncounterService {
 	Encounter getEncounterById(Integer id);
 	
 	Encounter createEncounter(Encounter encounter);
+	
+	Encounter updateEncounter(Integer id, Encounter updatedEncounter);
 }
