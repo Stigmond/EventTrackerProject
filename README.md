@@ -10,11 +10,11 @@ Send your preferred web browser to: http://35.164.69.220:8080/Phenomenomicon/api
 
 ## REST API Endpoints
 
-Access the following actions utilizing http://35.164.69.220:8080/Phenomenomicon/ and the following URL templates:
+Access the following actions utilizing http://35.164.69.220:8080/Phenomenomicon and then amending the following URL templates:
 
 | Action  | HTTP Method | URL Template          |  
 | ------- |:-----------:|:----------------------|
-| LIST    | GET         | /api/encounter        | (ex: http://35.164.69.220:8080/Phenomenomicon/api/encounter)
+| LIST    | GET         | /api/encounter        |
 | READ    | GET         | /api/encounter/{id}   |
 | CREATE  | POST        | /api/encounter/{id}   |
 | UPDATE  | PUT         | /api/encounter/{id}   |
