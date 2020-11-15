@@ -94,16 +94,23 @@ public class EncounterServiceImpl implements EncounterService {
 
 	@Override
 	public boolean deleteEncounter(Integer id) {
+		
 		boolean deleted = false;
 
-		Encounter encounter = this.getEncounterById(id);
-	
-		if (encounter.getDisabled() != 2) {
-			encounter.setDisabled(2); // SETS ENTITY TO VALUE FOR REMOVED/DELETED;
-			encRepo.saveAndFlush(encounter);
+		Encounter encounterToDelete = this.getEncounterById(id);
+		
+		if (encounterToDelete != null) {
+			encRepo.delete(encounterToDelete);
 			deleted = true;
 		}
 
+		// ALTERNATIVE: SET ENTITY TO VALUE FOR REMOVED/DELETED
+//		Encounter encounter = this.getEncounteryById(id);		
+//		if (encounter.getDisabled() != 2) {
+//			encounter.setDisabled(2); // SETS ENTITY TO VALUE FOR REMOVED/DELETED;
+//			encRepo.saveAndFlush(encounter);
+//			deleted = true;
+//		}
 		return deleted;
 	}
 
