@@ -24,15 +24,15 @@ public class Encounter {
 	@Column(name="state_country")
 	private String stateCountry;
 	
-	private Double lat;
+	private Double latitude;
 	
-	@Column(name="long")
 	private Double longitude;
 	
-	private String entity;
+	@Column(name="entity_type")
+	private String entityType;
 	
 	@Column(name="entity_url")
-	private String entity_url;
+	private String entityUrl;
 	
 	private int disabled;
 	
@@ -45,6 +45,7 @@ public class Encounter {
 	}
 
 	//---------- Getters/Setters
+	
 	
 	public int getId() {
 		return id;
@@ -78,12 +79,12 @@ public class Encounter {
 		this.stateCountry = stateCountry;
 	}
 
-	public Double getLat() {
-		return lat;
+	public Double getLatitude() {
+		return latitude;
 	}
 
-	public void setLat(Double lat) {
-		this.lat = lat;
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
 	}
 
 	public Double getLongitude() {
@@ -94,20 +95,20 @@ public class Encounter {
 		this.longitude = longitude;
 	}
 
-	public String getEntity() {
-		return entity;
+	public String getEntityType() {
+		return entityType;
 	}
 
-	public void setEntity(String entity) {
-		this.entity = entity;
+	public void setEntityType(String entityType) {
+		this.entityType = entityType;
 	}
 
-	public String getEntity_url() {
-		return entity_url;
+	public String getEntityUrl() {
+		return entityUrl;
 	}
 
-	public void setEntity_url(String entity_url) {
-		this.entity_url = entity_url;
+	public void setEntityUrl(String entityUrl) {
+		this.entityUrl = entityUrl;
 	}
 
 	public int getDisabled() {
@@ -133,8 +134,9 @@ public class Encounter {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
-		result = prime * result + ((entity == null) ? 0 : entity.hashCode());
+		result = prime * result + ((entityType == null) ? 0 : entityType.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((stateCountry == null) ? 0 : stateCountry.hashCode());
 		return result;
 	}
 
@@ -152,23 +154,31 @@ public class Encounter {
 				return false;
 		} else if (!date.equals(other.date))
 			return false;
-		if (entity == null) {
-			if (other.entity != null)
+		if (entityType == null) {
+			if (other.entityType != null)
 				return false;
-		} else if (!entity.equals(other.entity))
+		} else if (!entityType.equals(other.entityType))
 			return false;
 		if (id != other.id)
 			return false;
+		if (stateCountry == null) {
+			if (other.stateCountry != null)
+				return false;
+		} else if (!stateCountry.equals(other.stateCountry))
+			return false;
 		return true;
 	}
+	
+	//---------- toString
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Encounter [id=").append(id).append(", date=").append(date).append(", entity=").append(entity)
-				.append("]");
+		builder.append("Encounter [id=").append(id).append(", date=").append(date).append(", entityType=")
+				.append(entityType).append(", disabled=").append(disabled).append("]");
 		return builder.toString();
 	}
+
 
 
 	

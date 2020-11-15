@@ -46,7 +46,7 @@ class EncounterTest {
 	void test() {
 		assertNotNull(encounter);
 		assertEquals(1967, encounter.getDate().getYear());
-		assertEquals("Bigfoot", encounter.getEntity());
+		assertEquals("Bigfoot", encounter.getEntityType());
 		assertEquals(-123.549006, encounter.getLongitude());
 	}
 

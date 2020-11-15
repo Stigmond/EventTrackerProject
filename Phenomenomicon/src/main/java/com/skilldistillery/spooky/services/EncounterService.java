@@ -9,4 +9,6 @@ public interface EncounterService {
 	List<Encounter> getAllEncounters();
 	
 	Encounter getEncounterById(Integer id);
+	
+	Encounter createEncounter(Encounter encounter);
 }
