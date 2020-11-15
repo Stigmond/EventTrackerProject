@@ -1,6 +1,7 @@
 package com.skilldistillery.spooky.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,18 @@ public class EncounterServiceImpl implements EncounterService {
 	
 	@Override
 	public List<Encounter> getAllEncounters() {
-		
-		return null;
+		return encRepo.findAll();
 	}
+
+	@Override
+	public Encounter getEncounterById(Integer id) {
+		Encounter encounter = null;
+		Optional<Encounter> optEnc = encRepo.findById(id);
+		if (optEnc.isPresent()) {
+			encounter = optEnc.get();
+		}
+		return encounter;
+	}
+	
 
 }

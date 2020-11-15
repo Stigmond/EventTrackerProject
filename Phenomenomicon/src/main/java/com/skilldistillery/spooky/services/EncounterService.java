@@ -7,4 +7,6 @@ import com.skilldistillery.spooky.entities.Encounter;
 public interface EncounterService {
 
 	List<Encounter> getAllEncounters();
+	
+	Encounter getEncounterById(Integer id);
 }

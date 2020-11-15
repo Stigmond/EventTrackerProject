@@ -30,7 +30,6 @@ class EncounterTest {
 		emf.close();
 	}
 		
-
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
