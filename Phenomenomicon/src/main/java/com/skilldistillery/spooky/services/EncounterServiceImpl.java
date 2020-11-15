@@ -46,7 +46,7 @@ public class EncounterServiceImpl implements EncounterService {
 			encounter.setEntityType("Unknown");
 		}
 		if (encounter.getDisabled() != 1) {
-			encounter.setDisabled(1); //ENTERS DATABASE AS DISABLED FOR ADMIN REVIEW
+			encounter.setDisabled(1); // ENTERS DATABASE AS VALUE FOR DISABLED FOR ADMIN REVIEW
 		}
 		if (encounter.getBody() == null) {
 			encounter.setBody("CLASSIFIED");
@@ -58,7 +58,7 @@ public class EncounterServiceImpl implements EncounterService {
 
 	@Override
 	public Encounter updateEncounter(Integer id, Encounter updatedEncounter) {
-		Encounter encounter  = this.getEncounterById(id);
+		Encounter encounter = this.getEncounterById(id);
 		if (encounter == null) {
 			return null;
 		}
@@ -86,10 +86,25 @@ public class EncounterServiceImpl implements EncounterService {
 		if (updatedEncounter.getBody() != null) {
 			encounter.setBody(updatedEncounter.getBody());
 		}
-		encounter.setDisabled(1); //SETS UPDATED ENTITY TO DISABLED FOR ADMIN REVIEW
-		
+		encounter.setDisabled(1); // SETS UPDATED ENTITY VALUE TO DISABLED FOR ADMIN REVIEW
+
 		encRepo.saveAndFlush(encounter);
 		return encounter;
+	}
+
+	@Override
+	public boolean deleteEncounter(Integer id) {
+		boolean deleted = false;
+
+		Encounter encounter = this.getEncounterById(id);
+	
+		if (encounter.getDisabled() != 2) {
+			encounter.setDisabled(2); // SETS ENTITY TO VALUE FOR REMOVED/DELETED;
+			encRepo.saveAndFlush(encounter);
+			deleted = true;
+		}
+
+		return deleted;
 	}
 
 }

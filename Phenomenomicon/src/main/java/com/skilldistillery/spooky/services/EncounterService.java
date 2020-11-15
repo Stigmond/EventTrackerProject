@@ -13,4 +13,6 @@ public interface EncounterService {
 	Encounter createEncounter(Encounter encounter);
 	
 	Encounter updateEncounter(Integer id, Encounter updatedEncounter);
+	
+	boolean deleteEncounter(Integer id);
 }

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,4 +59,17 @@ public class EncounterController {
 		encounter = encService.updateEncounter(id, encounter);
 		return encounter;
 	}
+	
+	@DeleteMapping("encounter/{id}")
+	public void deleteEncounter(@PathVariable Integer id, HttpServletResponse response) {
+		boolean deleted = encService.deleteEncounter(id);
+		if (deleted == true) {
+			response.setStatus(204);
+		} else {
+			response.setStatus(404);
+		}
+			
+	}
 }
+	
+
