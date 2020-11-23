@@ -5,6 +5,7 @@ window.addEventListener('load', function(e) {
 
 function init(){
   getAllEvents();
+  document.addEncounter.add.addEventListener('click', addEncounter);
   };
 
 function getAllEvents(){
@@ -63,4 +64,43 @@ function listEncounters(encounters){
     eventsTableBody.appendChild(table);
   }
   events.appendChild(eventsTableBody);
+};
+
+function addEncounter(e) {
+  e.preventDefault();
+  let affirm = confirm("Are you sure you wish to add this Encounter?");
+  if (affirm) {
+  let newEncounter = {
+    date: e.target.parentElement.date.value,
+    city: e.target.parentElement.city.value,
+    stateCountry: e.target.parentElement.stateCountry.value,
+    latitude: e.target.parentElement.latitude.value,
+    longitude: e.target.parentElement.longitude.value,
+    entityType: e.target.parentElement.entityType.value,
+    entityUrl: e.target.parentElement.entityUrl.value,
+    body: e.target.parentElement.body.value
+  };
+
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', 'api/encounter');
+
+  xhr.setRequestHeader("Content-type", "application/json");
+
+  xhr.onreadystatechange   = function() {
+    if (xhr.readyState === 4) {
+      if (xhr.status == 200 || xhr.status == 201) {
+        let data = JSON.parse(xhr.responseText);
+        console.log(data);
+        e.target.parentElement.reset();
+        init();
+      }
+      else {
+        console.log("POST request failed.");
+        console.error(xhr.status + ' :' + xhr.responseText);
+      }
+    }
+  };
+  var userObjectJson = JSON.stringify(newEncounter);
+  xhr.send(userObjectJson);
+}
 };

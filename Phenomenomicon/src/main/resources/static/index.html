@@ -10,10 +10,28 @@
   </head>
   <body>
     <div id="Title" class="text-center"><h1>Welcome to the Phenomenomicon</h1></div>
-    <hr>
-    <div id="encounterList" class="table"></div>
-
-
+    <div class="row">
+      <div class="col">
+        <div id="encounterList" class="table table-striped"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <hr>
+        <h4 id="addEvent" class="text-left">Add an Encounter</h4>
+        <form name="addEncounter">
+            <input type="date" name="date"><br>
+            <input type="text" name="city" placeholder="city"><br>
+            <input type="text" name="stateCountry" placeholder="state/country"><br>
+            <input type="number" name="latitude" step=".00001" placeholder="latitude"><br>
+            <input type="number" name="longitude" step=".00001" placeholder="longitude"><br>
+            <input type="text" name="entityType" placeholder="Entity Type"><br>
+            <input type="text" name="entityUrl" placeholder="Entity Image URL"><br>
+            <textarea name="body" placeholder="Describe Event Here"></textarea><br>
+            <button name="add">Submit</button>
+        </form>
+      </div>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
