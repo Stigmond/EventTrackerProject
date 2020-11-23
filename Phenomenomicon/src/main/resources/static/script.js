@@ -127,15 +127,84 @@ function addEncounter(e) {
 };
 
 function showEvent(encounter) {
-  console.log(encounter);
+
   var encounterDetails = document.getElementById('encounterDetails');
   encounterDetails.textContent = '';
-  let cardTitle = document.createElement('h3');
-  cardTitle.class= 'card-title';
-  cardTitle.textContent = encounter.entityType;
-  encounterDetails.appendChild(cardTitle);
-  let cardText = document.createElement('p');
-  cardText.class = 'card-text';
-  cardText.textContent = encounter.body;
-  encounterDetails.appendChild(cardText);
+  let picture = document.createElement('img');
+    if (encounter.entityUrl === 'Unknown'|| encounter.entityUrl === ('') || encounter.entityUrl === null) {
+      picture.src = 'https://images-na.ssl-images-amazon.com/images/I/511irlY4qML._AC_.jpg'
+    } else {
+      picture.src = encounter.entityUrl;}
+  picture.width = '240';
+  let updateForm = document.createElement('form');
+  updateForm.name = "updateEncounter";
+  let formDate = document.createElement('input');
+  formDate.type = 'date';
+  formDate.name = 'date';
+  formDate.value = encounter.date;
+  let formEntity = document.createElement('input');
+  formEntity.type = 'text';
+  formEntity.name = 'entityType';
+  formEntity.value = encounter.entityType;
+  formEntity.placeholder = 'entity';
+  let formUrl = document.createElement('input');
+  formUrl.type = 'text';
+  formUrl.name = 'entityUrl';
+  formUrl.value = encounter.entityUrl;
+  formUrl.placeholder = 'entity image(http://)';
+  let formCity = document.createElement('input');
+  formCity.type = 'text';
+  formCity.name = 'city';
+  formCity.value = encounter.city;
+  formCity.placeholder = 'city';
+  let formState = document.createElement('input');
+  formState.type = 'text';
+  formState.name = 'stateCountry';
+  formState.value = encounter.stateCountry;
+  formState.maxlength='2';
+  formState.placeholder = 'state/country';
+  let formLat = document.createElement('input');
+  formLat.type = 'number';
+  formLat.name = 'latitude';
+  formLat.value = encounter.latitude;
+  formLat.placeholder = 'latitude';
+  let formLong = document.createElement('input');
+  formLong.type = 'number';
+  formLong.name = 'longitude';
+  formLong.value = encounter.longitude;
+  formLong.placeholder = 'longitude';
+  let formBody = document.createElement('textarea');
+  formBody.name = 'body';
+  formBody.value = encounter.body;
+  formBody.rows="3";
+  formBody.cols="40";
+  formBody.placeholder = 'encounter description';
+  let updateButton = document.createElement('button');
+  updateButton.textContent = 'Update';
+  let deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete';
+
+  updateForm.appendChild(picture);
+  updateForm.appendChild(document.createElement('br'));
+  updateForm.appendChild(formDate);
+  updateForm.appendChild(document.createElement('br'));
+  updateForm.appendChild(formEntity);
+  updateForm.appendChild(document.createElement('br'));
+  updateForm.appendChild(formUrl);
+  updateForm.appendChild(document.createElement('br'));
+  updateForm.appendChild(formCity);
+  updateForm.appendChild(formState);
+  updateForm.appendChild(document.createElement('br'));
+  updateForm.appendChild(formLat);
+  updateForm.appendChild(formLong);
+  updateForm.appendChild(document.createElement('br'));
+  updateForm.appendChild(formBody);
+  updateForm.appendChild(document.createElement('br'));
+  updateForm.appendChild(updateButton);
+  updateForm.appendChild(deleteButton);
+  encounterDetails.appendChild(updateForm);
 };
+
+function updateEvent() {
+  
+}

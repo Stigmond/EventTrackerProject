@@ -9,35 +9,38 @@
     <script src="script.js" charset="utf-8"></script>
   </head>
   <body>
+    <div class="container-fluid">
     <div class="row">
         <div class="col"><div id="Title" class="text-center"><h1>Welcome to the Phenomenomicon</h1></div></div>
     </div>
     <div class="row">
-      <div class="col">
-        <div id="encounterList" class="table table-striped"></div>
+      <div id=class="col">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table id="encounterList" class="table table-bordered table-striped mb-0"></table>
+      </div>
       </div>
       <div class="col">
-        <div id="encounterDetails" class="card"></div>
+        <div id="encounterDetails"></div>
       </div>
     </div>
     <div class="row">
       <div class="col">
         <hr>
-        <h4 id="addEvent" class="text-left">Add an Encounter</h4>
-        <form name="addEncounter">
+        <h4 id="addEvent" class="text-center">Add an Encounter</h4>
+        <form class="text-center" name="addEncounter">
             <input type="date" name="date"><br>
             <input type="text" name="city" placeholder="city"><br>
-            <input type="text" name="stateCountry" placeholder="state/country"><br>
+            <input type="text" name="stateCountry" placeholder="state/country" maxlength='2'><br>
             <input type="number" name="latitude" step=".00001" placeholder="latitude"><br>
             <input type="number" name="longitude" step=".00001" placeholder="longitude"><br>
             <input type="text" name="entityType" placeholder="Entity Type"><br>
             <input type="text" name="entityUrl" placeholder="Entity Image URL"><br>
-            <textarea name="body" placeholder="Describe Event Here"></textarea><br>
+            <textarea name="body" placeholder="Describe Event Here" rows='3' cols='40'></textarea><br>
             <button name="add">Submit</button>
         </form>
       </div>
     </div>
-
+</div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
