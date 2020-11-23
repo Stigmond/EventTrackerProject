@@ -189,6 +189,7 @@ function showEvent(encounter) {
   updateButton.addEventListener('click', updateEvent);
   let deleteButton = document.createElement('button');
   deleteButton.textContent = 'Delete';
+  deleteButton.addEventListener('click', deleteEvent);
 
   updateForm.appendChild(formId);
   updateForm.appendChild(picture);
@@ -248,5 +249,28 @@ e.preventDefault;
     };
     var userObjectJson = JSON.stringify(updatedEncounter);
     xhr.send(userObjectJson);
+  }
+};
+
+function deleteEvent(e) {
+e.preventDefault;
+  let affirm = confirm("Are you sure you wish to delete this Encounter?");
+  if (affirm) {
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('DELETE', `api/encounter/${e.target.parentElement.id.value}`);
+
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 204) {
+
+          alert("Encounter successfully deleted.");
+        } else {
+          console.log("DELETE request failed.");
+          console.error(xhr.status + ' :' + xhr.responseText);
+        }
+      }
+    };
+    xhr.send(null);
   }
 };
