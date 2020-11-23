@@ -7,6 +7,7 @@ function init() {
 
   getAllEvents();
   document.addEncounter.add.addEventListener('click', addEncounter);
+
 };
 
 function getAllEvents() {
@@ -111,7 +112,6 @@ function addEncounter(e) {
       if (xhr.readyState === 4) {
         if (xhr.status == 200 || xhr.status == 201) {
           let data = JSON.parse(xhr.responseText);
-          console.log(data);
           e.target.parentElement.reset();
           init();
           showEvent(data);
@@ -127,7 +127,6 @@ function addEncounter(e) {
 };
 
 function showEvent(encounter) {
-
   var encounterDetails = document.getElementById('encounterDetails');
   encounterDetails.textContent = '';
   let picture = document.createElement('img');
@@ -138,6 +137,10 @@ function showEvent(encounter) {
   picture.width = '240';
   let updateForm = document.createElement('form');
   updateForm.name = "updateEncounter";
+  let formId = document.createElement('input');
+  formId.type = 'hidden';
+  formId.name = 'id';
+  formId.value = encounter.id;
   let formDate = document.createElement('input');
   formDate.type = 'date';
   formDate.name = 'date';
@@ -166,11 +169,13 @@ function showEvent(encounter) {
   let formLat = document.createElement('input');
   formLat.type = 'number';
   formLat.name = 'latitude';
+  formLat.step = '.000001';
   formLat.value = encounter.latitude;
   formLat.placeholder = 'latitude';
   let formLong = document.createElement('input');
   formLong.type = 'number';
   formLong.name = 'longitude';
+  formLong.step = '.000001';
   formLong.value = encounter.longitude;
   formLong.placeholder = 'longitude';
   let formBody = document.createElement('textarea');
@@ -181,9 +186,11 @@ function showEvent(encounter) {
   formBody.placeholder = 'encounter description';
   let updateButton = document.createElement('button');
   updateButton.textContent = 'Update';
+  updateButton.addEventListener('click', updateEvent);
   let deleteButton = document.createElement('button');
   deleteButton.textContent = 'Delete';
 
+  updateForm.appendChild(formId);
   updateForm.appendChild(picture);
   updateForm.appendChild(document.createElement('br'));
   updateForm.appendChild(formDate);
@@ -205,6 +212,41 @@ function showEvent(encounter) {
   encounterDetails.appendChild(updateForm);
 };
 
-function updateEvent() {
-  
-}
+function updateEvent(e) {
+e.preventDefault;
+  // console.log(e.target.parentElement.id.value);
+  // console.log(e.target.parentElement.body.value);
+  let affirm = confirm("Are you sure you wish to update this Encounter?");
+  if (affirm) {
+    let updatedEncounter = {
+      date: e.target.parentElement.date.value,
+      city: e.target.parentElement.city.value,
+      stateCountry: e.target.parentElement.stateCountry.value,
+      latitude: e.target.parentElement.latitude.value,
+      longitude: e.target.parentElement.longitude.value,
+      entityType: e.target.parentElement.entityType.value,
+      entityUrl: e.target.parentElement.entityUrl.value,
+      body: e.target.parentElement.body.value
+    };
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('PUT', `api/encounter/${e.target.parentElement.id.value}`);
+
+    xhr.setRequestHeader("Content-type", "application/json");
+
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          let data = JSON.parse(xhr.responseText);
+          console.log(data);
+          showEvent(data);
+        } else {
+          console.log("PUT request failed.");
+          console.error(xhr.status + ' :' + xhr.responseText);
+        }
+      }
+    };
+    var userObjectJson = JSON.stringify(updatedEncounter);
+    xhr.send(userObjectJson);
+  }
+};
