@@ -263,7 +263,6 @@ e.preventDefault;
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
         if (xhr.status === 204) {
-
           alert("Encounter successfully deleted.");
         } else {
           console.log("DELETE request failed.");
