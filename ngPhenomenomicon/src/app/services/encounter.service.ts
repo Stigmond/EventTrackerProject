@@ -14,7 +14,7 @@ export class EncounterService {
 
   constructor(private http: HttpClient) { }
 
-  index(): Observable<Encounter[]> {
+  public index(): Observable<Encounter[]> {
     return this.http.get<Encounter[]>(this.url)
       .pipe(
         catchError((err: any) => {
@@ -24,10 +24,23 @@ export class EncounterService {
       );
   }
 
+  public create(newEncounter: Encounter): Observable<Encounter> {
+      const httpOptions = {
+        headers: {
+          'Content-type': 'application/json'
+        }
+      };
 
-  public create() {
-
+    return this.http.post<Encounter>(this.url, newEncounter, httpOptions).pipe(
+      catchError((err:any) => {
+        console.log(err);
+        return throwError('EncounterService.create(): Error Adding Encounter');
+      })
+    );
   }
+
+
+
 
   public update() {
 

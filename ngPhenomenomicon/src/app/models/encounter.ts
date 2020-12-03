@@ -1,7 +1,8 @@
 export class Encounter {
 
   date: string;
-  state: string;
+  city: string;
+  stateCountry: string;
   latitude: number;
   longitude: number;
   entityType: string;
@@ -10,7 +11,8 @@ export class Encounter {
 
   constructor(
     date?: string,
-    state?: string,
+    city?: string,
+    stateCountry?: string,
     latitude?: number,
     longitude?: number,
     entityType?: string,
@@ -18,7 +20,8 @@ export class Encounter {
     body?: string
   ) {
     this.date = date;
-    this.state = state;
+    this.city = city;
+    this.stateCountry = stateCountry;
     this.latitude = latitude;
     this.longitude = longitude;
     this.entityType = entityType;

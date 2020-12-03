@@ -11,7 +11,7 @@ export class DisplayEncounterComponent implements OnInit {
 
   encounters: Encounter[];
   selectedEncounter: Encounter = null;
-  newEncounter: Encounter = null;
+  newEncounter: Encounter = new Encounter();
   wantsToAdd: boolean = false;
 
   constructor(private encounterService: EncounterService) { }
@@ -36,7 +36,24 @@ export class DisplayEncounterComponent implements OnInit {
     );
   }
 
-  showEncounter(encounter: Encounter): void {
-    console.log(encounter.body);
+  addEncounter(encounter: Encounter): void {
+    console.log(encounter);
+    this.encounterService.create(encounter).subscribe(
+      success=> {
+        this.loadEncounters();
+        this.clearForm();
+        this.wantsToAdd = false;
+      },
+      failure=> {
+        console.error('displayEncounterComponent.addEncounter(): submission failed');
+        console.error(failure);
+        this.clearForm();
+        this.wantsToAdd = false;
+      }
+    );
+  }
+
+  clearForm(): void {
+    this.newEncounter = new Encounter();
   }
 }
