@@ -1,0 +1,48 @@
+
+.card-img-top {
+  width: 382px;
+  height: 360px;
+}
+.card-text {
+  border-style: double;
+  border-color:lightgray;
+  border-radius: 2px;
+  border-width: 2px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.btn {
+  margin-top: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+#classified {
+  width: 382px;
+  height:360px;
+  background-color: moccasin;
+}
+.card {
+  background-color: moccasin;
+}
+
+.colB {
+  margin-left: 100px;
+}
+
+h1 {
+  color: white;
+  text-decoration-line: line-through;
+  text-decoration-color: red;
+}
+
+th {
+  color: white;
+}
+
+h3 {
+  color: white;
+}
+
+

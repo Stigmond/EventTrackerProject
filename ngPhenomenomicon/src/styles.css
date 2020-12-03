@@ -1,1 +1,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+
+body {
+ background-repeat: no-repeat;
+ background-image: url("https://npr.brightspotcdn.com/dims4/default/e890eb8/2147483647/strip/true/crop/2048x1365+0+0/resize/1760x1174!/format/webp/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Flegacy%2Fsites%2Fkut%2Ffiles%2F201802%2F40363837722_b928238b39_k.jpg");
+ background-size: auto;
+}
