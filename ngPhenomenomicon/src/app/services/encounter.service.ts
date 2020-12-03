@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Encounter } from './../models/encounter';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -9,8 +10,10 @@ import { catchError } from 'rxjs/operators';
 })
 export class EncounterService {
 
-  private baseUrl = 'http://localhost:8085/';
-  private url = this.baseUrl + 'api/encounter';
+  // private baseUrl = 'http://localhost:8085/';
+  baseUrl = environment.baseUrl;
+  url = this.baseUrl + 'api/encounter';
+
 
   constructor(private http: HttpClient) { }
 
