@@ -2,9 +2,9 @@
 
 ## Overview
 
-This is the Week 12/13 Project for the Skill Distillery Full-Stack Java Bootcamp.  The ultimate goal of this project is for students to create a full-stack Event Tracker utilizing Spring Boot and APIs. This is the second (and final) stage of the project, and students are required to display their ability to connect their back-end to the front-end via the use of JavaScript and REST API.  For this project, the theme of the event tracker involves unsubstantiated phenomena (e.g., paranormal activity).
+This is the Week 14 Project for the Skill Distillery Full-Stack Java Bootcamp.  This is the second stage of the week 12/13 project, now requiring students to display their ability to connect their Java/SpringJPA back-end to an Angular front-end.  For this ongoing project, the theme of the event tracker has been the tracking and recording of unsubstantiated phenomena (e.g., paranormal activity).
 
-*Per instructor advice, this Event Tracker currently utilizes one table in a database.  However, this will likely be a continued project after graduation.  
+*Per instructor advice, this Event Tracker currently only makes limited use of one table in a database.  However, this will likely be a continued project after graduation.  
 
 ## Login Information
 
@@ -12,18 +12,20 @@ Send your preferred web browser to: http://35.164.69.220:8080/, where you will b
 
 ## Instructions
 
-If you have any interest in reviewing any of the encounters, you simply have to click on any of the encounters.  All details will then be displayed to the right, including the date of the encounter, the entity involved, the geographical location of the encounter,  a visual representation of the entity involved, and a brief description of the encounter.  
+If you have any interest in reviewing any of the encounters, you simply have to click on any of the encounters.  All pertinent details will then be displayed to the right, including an image of the entity involved, and a brief narrative of the encounter.  
 
-Upon loading the specific encounter, User will immediately have the opportunity to make changes to the entry should they feel it necessary.  All fields are modifiable, and any changes can be made into effect upon the clicking of 'update' and affirming the changes.  Alternatively, should User feel the encounter no longer needs to be included in the database, they can choose to delete it outright by clicking on the 'delete' button.  Here, they will also be prompted to confirm deletion, and will be given a supplemental notification if deletion is successful.
+Upon loading the specific encounter, User will be given the  option to change/update the entry should they feel it necessary, or delete it altogether.  All descriptive fields are modifiable, and any changes can be made into effect upon the clicking of 'update'.  Alternatively, should User feel the encounter no longer needs to be included in the database, they can choose to delete it outright by clicking on the 'delete' button.  Any actions taken to modify or remove the database will occur immediately and the changes will be immediately reflected in the index.
 
-Lastly, if User wishes to add an encounter, the option is made available at the bottom of the page.  Based on the difficulty of sometimes obtaining substantial information on these encounters, adding encounters is flexible with the data required.  After clicking the 'submit' button, the return data is forwarded to the update/display section of the page, so it can be for reviewed for accuracy and updating.
+Lastly, if User wishes to add an encounter, this option is made available at the bottom of the index list.  Based on the difficulty of sometimes obtaining substantial information on these encounters, adding encounters is flexible with the data required.  After clicking the 'submit' button, the index is immediately updated to allow user to review the data entered.  Cancelling the request will clear the form.
 
 Have fun!
 
 ## Technologies Used
 
+* Angular,
+* JavaScript and JavaType,
+* Visual Studio Code,
 * Java,
-* JavaScript,
 * Document Object Models(DOMs),
 * XmlHttpRequests(XHRs),
 * Gradle,
@@ -44,6 +46,5 @@ Have fun!
 
 ## Key Lessons Learned
 
-1. This project introduced an alternative method to the Model/View method, including potential shortcuts available through Spring Rest--should it be utilized by employers.
-2. This project showed how much more flexible and dynamic a web page can be utilizing JavaScript, as opposed to the use of the Model/View, JSP, and JTML.
-3. This project presented an opportunity for extensive use and understanding of the JavaScript language, including XMLHttpRequest Objects for CRUD operations.
+1. Preparing an Angular front-end for this project provided extensive practice in JavaScript and JavaType, data binding, creation of components and services, css and Bootstrap integration, and the utilization of new technologies (e.g. Visual Studio Code) to efficiently apply these languages.
+2. This project provided an extremely flexible and efficient way to utilize JavaScript in front-end development, as well as providing a more structured layout.  Angular is an excellent alternative to coding in raw JavaScript. 
