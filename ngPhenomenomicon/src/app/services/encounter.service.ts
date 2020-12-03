@@ -39,14 +39,25 @@ export class EncounterService {
     );
   }
 
-
-
-
   public update() {
 
   }
 
-  public destroy() {
+  public destroy(encounterId: number): Observable<boolean> {
+    const httpOptions = {
+      headers: {
+        'Content-type': 'application/json'
+      }
+    };
 
-  }
-}
+      return this.http.delete<boolean>(`${this.url}/${encounterId}`, httpOptions).pipe(
+        catchError((err: any) => {
+          console.log(err);
+          return throwError('EncounterService.destroy(): Error Deleting Encounter');
+        })
+      );
+
+      }
+
+
+ }

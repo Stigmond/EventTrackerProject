@@ -37,7 +37,6 @@ export class DisplayEncounterComponent implements OnInit {
   }
 
   addEncounter(encounter: Encounter): void {
-    console.log(encounter);
     this.encounterService.create(encounter).subscribe(
       success=> {
         this.loadEncounters();
@@ -52,6 +51,20 @@ export class DisplayEncounterComponent implements OnInit {
       }
     );
   }
+
+  deleteEncounter(encounterId: number): void {
+    this.encounterService.destroy(encounterId).subscribe(
+      success=> {
+        this.selectedEncounter = null;
+        this.loadEncounters();
+      },
+      failure=> {
+        console.error('displayEncounterComponent.deleteEncounter(): deletion failed');
+        console.error(failure);
+      }
+    );
+  }
+
 
   clearForm(): void {
     this.newEncounter = new Encounter();

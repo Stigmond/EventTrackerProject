@@ -12,12 +12,14 @@
       <table class="table table-hover table-active">
         <thead>
           <tr>
+            <th scope="col">ID#:</th>
             <th scope="col">Encounter Date:</th>
             <th scope="col">Entity Involved:</th>
           </tr>
         </thead>
         <tbody *ngFor="let encounter of encounters" class="table-primary">
           <tr (click)="selectedEncounter = encounter; wantsToAdd = false">
+            <td>{{encounter.id}}</td>
             <td>{{encounter.date}}</td>
             <td>{{encounter.entityType}}</td>
           </tr>
@@ -59,8 +61,8 @@
         <div class="card-body">
           <h5 class="card-title">{{selectedEncounter.entityType}}</h5>
           <div class="text-justify"><p class="card-text">{{selectedEncounter.body}}</p></div>
-          <a href="#" class="btn btn-primary">Update Encounter</a>
-          <a href="#" class="btn btn-warning">Delete Encounter</a>
+          <button class="btn btn-primary">Update Encounter</button>
+          <button class="btn btn-warning" (click)="deleteEncounter(selectedEncounter.id)">Delete Encounter</button>
         </div>
       </div>
     </div>

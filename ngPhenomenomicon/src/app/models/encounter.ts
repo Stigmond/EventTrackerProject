@@ -1,5 +1,6 @@
 export class Encounter {
 
+  id: number;
   date: string;
   city: string;
   stateCountry: string;
@@ -10,6 +11,7 @@ export class Encounter {
   body: string;
 
   constructor(
+    id?: number,
     date?: string,
     city?: string,
     stateCountry?: string,
@@ -19,6 +21,7 @@ export class Encounter {
     entityUrl?: string,
     body?: string
   ) {
+    this.id = id;
     this.date = date;
     this.city = city;
     this.stateCountry = stateCountry;
