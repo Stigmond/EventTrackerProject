@@ -39,9 +39,24 @@ export class EncounterService {
     );
   }
 
-  public update() {
 
+
+  public update(encounterId: number, updatedEncounter: Encounter) {
+
+    const httpOptions = {
+      headers: {
+        'Content-type': 'application/json'
+      }
+    };
+
+    return this.http.put<Encounter>(`${this.url}/${encounterId}`, updatedEncounter, httpOptions).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('TodoService.index(): Error updating todo');
+      })
+    );
   }
+
 
   public destroy(encounterId: number): Observable<boolean> {
     const httpOptions = {
@@ -58,6 +73,7 @@ export class EncounterService {
       );
 
       }
+
 
 
  }

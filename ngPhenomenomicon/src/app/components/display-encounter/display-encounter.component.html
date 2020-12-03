@@ -18,15 +18,16 @@
           </tr>
         </thead>
         <tbody *ngFor="let encounter of encounters" class="table-primary">
-          <tr (click)="selectedEncounter = encounter; wantsToAdd = false">
+          <tr (click)="selectedEncounter = encounter; wantsToAdd = false; wantsToEdit = false">
             <td>{{encounter.id}}</td>
             <td>{{encounter.date}}</td>
             <td>{{encounter.entityType}}</td>
           </tr>
         </tbody>
       </table>
-      <button (click)="wantsToAdd = true" class="btn btn-primary" *ngIf="!wantsToAdd">Add Encounter</button>
-      <div *ngIf="wantsToAdd" class="text-left">
+      <button (click)="wantsToAdd = true; selectedEncounter = null" class="btn btn-primary" *ngIf="!wantsToEdit && !wantsToAdd">Add Encounter</button>
+
+      <div *ngIf="wantsToAdd && !wantsToEdit" class="text-left">
         <h3>Enter New Encounter:</h3>
         <form id="addEncounter">
         <input type="date" name="date" placeholder="date" [(ngModel)]="newEncounter.date"><br>
@@ -41,13 +42,24 @@
          <button (click)="wantsToAdd = false; clearForm()">Cancel</button>
         </form>
       </div>
+
+      <div *ngIf="wantsToEdit" class="text-left">
+        <h3>Update Encounter:</h3>
+        <form id="editEncounter">
+        <input type="date" name="date" placeholder="date" [(ngModel)]="selectedEncounter.date"><br>
+         <input type="text" name="entityType" placeholder="entity type/name" [(ngModel)]="selectedEncounter.entityType"><br>
+         <input type="text" name="city" placeholder="city" [(ngModel)]="selectedEncounter.city"><br>
+         <input type="text" name="stateCountry" placeholder="state/country" maxlength="2" [(ngModel)]="selectedEncounter.stateCountry"><br>
+         <input type="number" name="latitude" placeholder="latitude" step=".000001" [(ngModel)]="selectedEncounter.latitude"><br>
+         <input type="number" name="longitude" placeholder="longitude" step=".000001" [(ngModel)]="selectedEncounter.longitude"><br>
+         <input type="text" name="entityUrl" placeholder="entity URL" [(ngModel)]="selectedEncounter.entityUrl"><br>
+         <textarea rows="10" cols="45" name="body" placeholder="description of event" [(ngModel)]="selectedEncounter.body"></textarea><br>
+         <button (click)="updateEncounter(selectedEncounter.id, selectedEncounter)">Update</button>
+         <button (click)="wantsToAdd = false; wantsToEdit = false">Cancel</button>
+        </form>
+      </div>
     </div>
   </div>
-
-
-
-
-
 
 
   <div class="col">
@@ -61,7 +73,7 @@
         <div class="card-body">
           <h5 class="card-title">{{selectedEncounter.entityType}}</h5>
           <div class="text-justify"><p class="card-text">{{selectedEncounter.body}}</p></div>
-          <button class="btn btn-primary">Update Encounter</button>
+          <button class="btn btn-primary" (click)="wantsToEdit=true">Update Encounter</button>
           <button class="btn btn-warning" (click)="deleteEncounter(selectedEncounter.id)">Delete Encounter</button>
         </div>
       </div>

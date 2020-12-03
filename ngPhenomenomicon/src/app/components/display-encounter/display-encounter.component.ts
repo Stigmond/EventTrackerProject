@@ -13,6 +13,7 @@ export class DisplayEncounterComponent implements OnInit {
   selectedEncounter: Encounter = null;
   newEncounter: Encounter = new Encounter();
   wantsToAdd: boolean = false;
+  wantsToEdit: boolean = false;
 
   constructor(private encounterService: EncounterService) { }
 
@@ -48,6 +49,22 @@ export class DisplayEncounterComponent implements OnInit {
         console.error(failure);
         this.clearForm();
         this.wantsToAdd = false;
+      }
+    );
+  }
+
+  updateEncounter(encounterId: number, updatedEncounter: Encounter): void {
+    this.encounterService.update(encounterId, updatedEncounter).subscribe(
+      success=> {
+        this.loadEncounters();
+        this.wantsToAdd = false;
+        this.wantsToEdit = false;
+      },
+      failure=> {
+        console.error('displayEncounterComponent.updateEncounter(): update failed');
+        console.error(failure);
+        this.wantsToAdd = false;
+        this.wantsToEdit = false;
       }
     );
   }
