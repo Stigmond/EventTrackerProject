@@ -51,7 +51,6 @@ public class EncounterServiceImpl implements EncounterService {
 		if (encounter.getBody() == null) {
 			encounter.setBody("CLASSIFIED");
 		}
-		System.out.println(encounter);
 		encRepo.saveAndFlush(encounter);
 		return encounter;
 	}

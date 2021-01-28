@@ -53,13 +53,13 @@ textarea {
   background-color: white;
   color: black;
   text-decoration-line: line-through;
-  opacity: 50%;
+  opacity: .7;
 }
 
 input {
   background-color: white;
   color: black;
-  opacity: 50%;
+  opacity: .7;
 }
 
 form {
