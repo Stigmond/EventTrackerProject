@@ -4,11 +4,11 @@
 
 This is the Week 14 Project for the Skill Distillery Full-Stack Java Bootcamp.  This is the second stage of the week 12/13 project, now requiring students to display their ability to connect their Java/SpringJPA back-end to an Angular front-end.  For this ongoing project, the theme of the event tracker has been the tracking and recording of unsubstantiated phenomena (e.g., paranormal activity).
 
-*Per instructor advice, this Event Tracker currently only makes limited use of one table in a database.  However, this will likely be a continued project after graduation.  
+*Per instructor advice, this Event Tracker currently only makes limited use of one table in a database, as it was primarly an Angular exercise.
 
 ## Login Information
 
-Send your preferred web browser to: http://35.164.69.220:8080/, where you will be directed immediately to the home page of the Phenomenomicon.  This page is all-encompassing and contains all of the currently-available functions.  Upon arriving at the index, you will be greeted and shown an itemized list of the current encounters in the Phenomenomicon.  
+Send your preferred web browser to: http://35.164.69.220:8080/Phenomenomicon/, where you will be directed immediately to the home page of the Phenomenomicon.  This page is all-encompassing and contains all of the currently-available functions.  Upon arriving at the index, you will be greeted and shown an itemized list of the current encounters in the Phenomenomicon.  
 
 ## Instructions
 
